@@ -1,4 +1,4 @@
-
+var chalk = require('chalk');
 var readlineSync = require("readline-sync");
 
 var score = 0;
@@ -26,9 +26,9 @@ var questions = [{
 }];
 
 function welcome() {
- var userName = readlineSync.question("What's your name? ");
+ var userName = readlineSync.question(chalk.yellow("What's your name? "));
 
-  console.log("Welcome "+ userName + " to HOW WELL DO YOU KNOW Bhavishya?- Quiz Game");
+  console.log(chalk.blue("Welcome "+ userName + " to HOW WELL DO YOU KNOW Bhavishya?- Quiz Game"));
 }
 
 
@@ -37,15 +37,14 @@ function play(question, answer) {
   var userAnswer = readlineSync.question(question);
 
   if (userAnswer.toUpperCase() === answer.toUpperCase()) { // branching
-    console.log("You are right!");
+    console.log(chalk.green("You are right!"));
     score = score + 1;
     
   } else {
-    console.log("You are wrong!");
-   
+    console.log(chalk.red("You are wrong!"));
   }
 
-  console.log("current score: ", score);
+  console.log(chalk.magentaBright("current score: ", score));
   console.log("-------------")
 }
 
@@ -57,11 +56,14 @@ function game() {
 }
 
 function dispScore() {
-  console.log("Your Final Score: ", score);
-  console.log("Thanks for playing!")
+  console.log(chalk.yellowBright("Your Final Score: ", score));
+  console.log(chalk.greenBright("Thanks for playing!"))
 }
 
 
 welcome();
 game();
 dispScore();
+
+
+
